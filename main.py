@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import pandas as pd
 import os
+import itertools
 
 class Parcel:
     def __init__(self, parcel_id, parcel_weight, parcel_destination, parcel_customer_name):
@@ -30,6 +31,7 @@ class Trucks:
         self.remaining_capacity -= parcel.parcel_weight
         self.destinations.add(parcel.parcel_destination)
 
+    
     def __str__(self) -> str:
         return (f"Truck(Capacity: {self.truck_max_capacity}kg, Remaining: {self.remaining_capacity}kg, "
                 f"Stops: {', '.join(self.destinations)}, parcels: {len(self.parcels)})")
@@ -67,6 +69,7 @@ class BinPackingSystem:
                 self.trucks.append(new_truck)
 
         return self.trucks
+
 
 destination_distances = {
         "Dalat": 250,
